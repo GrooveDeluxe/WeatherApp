@@ -50,6 +50,8 @@ final class CitiesListVC: BaseVC, ReactorHolder {
         return dataSource
     }()
 
+    private let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+
     private let refreshControl = UIRefreshControl()
 
     private lazy var tableView: UITableView = {
@@ -95,8 +97,8 @@ final class CitiesListVC: BaseVC, ReactorHolder {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bind()
         setupUI()
+        bind()
 
         fire(action: .fetchCities)
     }
@@ -128,10 +130,17 @@ private extension CitiesListVC {
                 .map(ViewModel.Action.deleteCity)
                 .bind(to: viewModel.action),
 
+            tableView.rx.itemSelected
+                .bind { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) },
+
             viewModel.state
                 .bind { [weak self] in
                     self?.showStateView(isLoading: $0.isLoading, isEmpty: $0.citiesWeather.isEmpty)
-                }
+                },
+
+            addButton.rx.tap
+                .map { ViewModel.Action.addCityTap }
+                .bind(to: viewModel.action)
         ])
     }
 }
@@ -140,6 +149,8 @@ private extension CitiesListVC {
 
 private extension CitiesListVC {
     func setupUI() {
+        navigationItem.rightBarButtonItem = addButton
+
         view.addSubview(tableView)
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()

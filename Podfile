@@ -12,6 +12,7 @@ target 'WeatherApp' do
   pod 'Moya/RxSwift', '~> 14.0'
   pod 'RealmSwift'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'RxKeyboard'
 
   target 'WeatherAppTests' do
     inherit! :search_paths

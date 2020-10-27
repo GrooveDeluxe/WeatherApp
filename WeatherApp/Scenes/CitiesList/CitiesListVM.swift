@@ -54,8 +54,9 @@ final class CitiesListVM: Reactor, Coordinatable, Interactable {
             interact(interactor.deleteCity(cityId),
                      complete: CitiesListVM.citiesWeatherDeleted)
         case .addCityTap:
-            break
+            coordinator.addCity()
         case .showCity(let cityId):
+            coordinator.showCity(cityId: cityId)
             break
         }
     }

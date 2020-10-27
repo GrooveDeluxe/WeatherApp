@@ -22,3 +22,12 @@ extension UIColor {
     static let appSeaweed = NamedColor.seaweed.color
     static let appYellow = NamedColor.yellow.color
 }
+
+extension UIColor {
+    func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { [unowned self] rendererContext in
+            self.setFill()
+            rendererContext.fill(CGRect(origin: .zero, size: size))
+        }
+    }
+}

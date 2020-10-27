@@ -51,6 +51,15 @@
 		424B6A5C253F1CDE00EDC41E /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424B6A5B253F1CDE00EDC41E /* WeatherAppTests.swift */; };
 		424B6A67253F1CDE00EDC41E /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424B6A66253F1CDE00EDC41E /* WeatherAppUITests.swift */; };
 		424B6B3C25402E8C00EDC41E /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424B6B3B25402E8C00EDC41E /* AppController.swift */; };
+		42A845BA2548161A00A2BD00 /* AddCityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A845B92548161A00A2BD00 /* AddCityVC.swift */; };
+		42A845BF25482C9600A2BD00 /* CityDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A845BE25482C9600A2BD00 /* CityDetailVC.swift */; };
+		42A845C425482CA700A2BD00 /* CityDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A845C325482CA700A2BD00 /* CityDetailVM.swift */; };
+		42A845C925482CCC00A2BD00 /* AddCityVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A845C825482CCC00A2BD00 /* AddCityVM.swift */; };
+		42A8460F254840B200A2BD00 /* AddCityInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A8460E254840B200A2BD00 /* AddCityInteractor.swift */; };
+		42A846142548437C00A2BD00 /* AddCityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A846132548437C00A2BD00 /* AddCityCoordinator.swift */; };
+		42A8461A2548455300A2BD00 /* UINavigationController+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A846192548455300A2BD00 /* UINavigationController+Convenience.swift */; };
+		42A846232548461600A2BD00 /* Optional+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A846222548461600A2BD00 /* Optional+Convenience.swift */; };
+		42A846322548566C00A2BD00 /* RealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A846312548566C00A2BD00 /* RealmDB.swift */; };
 		E63CC8C71C8AFC309374E4FF /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3E1DFC7AAB71A46DDB63A4 /* Pods_WeatherApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +133,16 @@
 		424B6A66253F1CDE00EDC41E /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		424B6A68253F1CDE00EDC41E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		424B6B3B25402E8C00EDC41E /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		42A845B92548161A00A2BD00 /* AddCityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityVC.swift; sourceTree = "<group>"; };
+		42A845BE25482C9600A2BD00 /* CityDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailVC.swift; sourceTree = "<group>"; };
+		42A845C325482CA700A2BD00 /* CityDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailVM.swift; sourceTree = "<group>"; };
+		42A845C825482CCC00A2BD00 /* AddCityVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityVM.swift; sourceTree = "<group>"; };
+		42A8460E254840B200A2BD00 /* AddCityInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityInteractor.swift; sourceTree = "<group>"; };
+		42A846132548437C00A2BD00 /* AddCityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityCoordinator.swift; sourceTree = "<group>"; };
+		42A846192548455300A2BD00 /* UINavigationController+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Convenience.swift"; sourceTree = "<group>"; };
+		42A846222548461600A2BD00 /* Optional+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Convenience.swift"; sourceTree = "<group>"; };
+		42A8462D254852FA00A2BD00 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		42A846312548566C00A2BD00 /* RealmDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDB.swift; sourceTree = "<group>"; };
 		826A31AF9AAAA3B64980D9AF /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8B3E1DFC7AAB71A46DDB63A4 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B690C0337A0EB00F4E0EF0B0 /* Pods_WeatherApp_WeatherAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp_WeatherAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +195,8 @@
 		42164B382540971F005B52BA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				42A84621254845F700A2BD00 /* Optional */,
+				42A846182548452A00A2BD00 /* NavigationController */,
 				422386D82546BEDB0051A7E9 /* Rx */,
 				422386D22546BD2B0051A7E9 /* Reactor */,
 				422386C22546B30C0051A7E9 /* Coordinator */,
@@ -236,6 +257,7 @@
 				42164C3825444B22005B52BA /* Protocols */,
 				42164C5D2544863B005B52BA /* Entities */,
 				42164C0925444797005B52BA /* RealmDAO.swift */,
+				42A846312548566C00A2BD00 /* RealmDB.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -357,6 +379,10 @@
 		422386E42546E49F0051A7E9 /* AddCity */ = {
 			isa = PBXGroup;
 			children = (
+				42A845B92548161A00A2BD00 /* AddCityVC.swift */,
+				42A845C825482CCC00A2BD00 /* AddCityVM.swift */,
+				42A846132548437C00A2BD00 /* AddCityCoordinator.swift */,
+				42A8460E254840B200A2BD00 /* AddCityInteractor.swift */,
 			);
 			path = AddCity;
 			sourceTree = "<group>";
@@ -364,6 +390,8 @@
 		422386E52546E4AA0051A7E9 /* CityDetail */ = {
 			isa = PBXGroup;
 			children = (
+				42A845BE25482C9600A2BD00 /* CityDetailVC.swift */,
+				42A845C325482CA700A2BD00 /* CityDetailVM.swift */,
 			);
 			path = CityDetail;
 			sourceTree = "<group>";
@@ -445,6 +473,22 @@
 				422386C82546B63A0051A7E9 /* ScenesFactory.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		42A846182548452A00A2BD00 /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				42A846192548455300A2BD00 /* UINavigationController+Convenience.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		42A84621254845F700A2BD00 /* Optional */ = {
+			isa = PBXGroup;
+			children = (
+				42A846222548461600A2BD00 /* Optional+Convenience.swift */,
+			);
+			path = Optional;
 			sourceTree = "<group>";
 		};
 		692CCE847A5716E4D5BC1C68 /* Pods */ = {
@@ -561,6 +605,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 424B6A38253F1CDD00EDC41E;
 			productRefGroup = 424B6A42253F1CDD00EDC41E /* Products */;
@@ -709,10 +754,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				42164C8925456358005B52BA /* Interactable.swift in Sources */,
+				42A846322548566C00A2BD00 /* RealmDB.swift in Sources */,
 				422386C42546B3240051A7E9 /* Coordinator+Alert.swift in Sources */,
+				42A8460F254840B200A2BD00 /* AddCityInteractor.swift in Sources */,
 				42164B9E254173C4005B52BA /* ReactorHolder.swift in Sources */,
+				42A845BA2548161A00A2BD00 /* AddCityVC.swift in Sources */,
 				42238675254596C20051A7E9 /* UIFont+Convenience.swift in Sources */,
 				4223866F254596630051A7E9 /* UIColor+Convenience.swift in Sources */,
+				42A845C425482CA700A2BD00 /* CityDetailVM.swift in Sources */,
 				42164BDA2542BB20005B52BA /* NetworkError.swift in Sources */,
 				42164BA32541744F005B52BA /* CitiesListItemCell.swift in Sources */,
 				42164C7C2544A42F005B52BA /* CitiesListCoordinator.swift in Sources */,
@@ -732,18 +781,23 @@
 				42164B862540A44B005B52BA /* Reactor.swift in Sources */,
 				42164BE22542BB78005B52BA /* CityResponse.swift in Sources */,
 				42164B3A25409745005B52BA /* UITableView+Nib.swift in Sources */,
+				42A846232548461600A2BD00 /* Optional+Convenience.swift in Sources */,
 				42238654254576D60051A7E9 /* UILabel+Convenience.swift in Sources */,
 				4223868025459E840051A7E9 /* CitiesListItemCellModel.swift in Sources */,
 				424B6A45253F1CDD00EDC41E /* AppDelegate.swift in Sources */,
 				424B6A47253F1CDD00EDC41E /* SceneDelegate.swift in Sources */,
 				42164B5A2540984E005B52BA /* CitiesListVM.swift in Sources */,
+				42A845C925482CCC00A2BD00 /* AddCityVM.swift in Sources */,
+				42A8461A2548455300A2BD00 /* UINavigationController+Convenience.swift in Sources */,
 				42164BED2542CEFD005B52BA /* WeatherTarget.swift in Sources */,
 				42238667254594C40051A7E9 /* UIColor+Additions.swift in Sources */,
 				42164BF32542EB87005B52BA /* Config.swift in Sources */,
 				424B6B3C25402E8C00EDC41E /* AppController.swift in Sources */,
+				42A845BF25482C9600A2BD00 /* CityDetailVC.swift in Sources */,
 				42164C0A25444797005B52BA /* RealmDAO.swift in Sources */,
 				422386B82545FD0D0051A7E9 /* CityWeather.swift in Sources */,
 				42164C772544A277005B52BA /* Coordinator.swift in Sources */,
+				42A846142548437C00A2BD00 /* AddCityCoordinator.swift in Sources */,
 				42164B6725409AC4005B52BA /* BaseVC.swift in Sources */,
 				42164C3125444B04005B52BA /* PersistableObject.swift in Sources */,
 			);
@@ -785,6 +839,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				424B6A50253F1CDE00EDC41E /* Base */,
+				42A8462D254852FA00A2BD00 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -796,6 +851,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -857,6 +913,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

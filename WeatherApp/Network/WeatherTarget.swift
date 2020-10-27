@@ -26,7 +26,9 @@ enum WeatherTarget {
 extension WeatherTarget: TargetType {
 
     private var lang: String {
-        Locale.current.languageCode ?? Locale.current.identifier
+        print("Locale.current.languageCode - \(Locale.current.languageCode)")
+        print("Locale.current.identifier - \(Locale.current.identifier)")
+        return Locale.current.languageCode ?? Locale.current.identifier
     }
 
     var baseURL: URL {

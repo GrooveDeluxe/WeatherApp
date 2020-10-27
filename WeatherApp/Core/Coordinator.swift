@@ -38,3 +38,27 @@ class Coordinator {
         vc?.view.endEditing(true)
     }
 }
+
+extension Coordinator {
+    func dismiss(completion: (() -> Void)? = nil) {
+        guard let vc = vc else { return }
+        endEditing()
+        vc.dismiss(animated: true, completion: completion)
+    }
+
+    func pop() {
+        vc?.navigationController?.popViewController(animated: true)
+    }
+
+    func close(completion: (() -> Void)? = nil) {
+        guard let vc = vc else { return }
+
+        endEditing()
+
+        if let navController = vc.navigationController, navController.viewControllers.count > 1 {
+            navController.pop(animated: true, completion: completion)
+        } else {
+            vc.dismiss(animated: true, completion: completion)
+        }
+    }
+}
