@@ -13,17 +13,29 @@ public struct DAOChangeset {
 
 protocol DAO {
 
-    associatedtype DBModel: Persistable
+    associatedtype P: Persistable
 
-    func object(entityID: String) -> DBModel.ManagedObject?
-    func collection() -> Results<DBModel.ManagedObject>
+    var managedObjects: Results<P.ManagedObject> { get }
+    var objects: [P] { get }
 
-    func persist(object: DBModel)
-    func persistAll(objects: [DBModel])
+    func persist(object: P)
+    func persist(objects: [P])
 
-    func erase(object: DBModel)
-    func erase(objects: [DBModel])
-    func erase()
+    func erase(managedObject: P.ManagedObject)
+    func erase(managedObjects: [P.ManagedObject])
+}
+
+extension Results {
+    func toArray<T>(ofType: T.Type) -> [T] {
+        var array = [T]()
+        for i in 0 ..< count {
+            if let result = self[i] as? T {
+                array.append(result)
+            }
+        }
+
+        return array
+    }
 }
 
 class RealmDAO<P: Persistable>: DAO {
@@ -37,12 +49,12 @@ class RealmDAO<P: Persistable>: DAO {
         return realm
     }
 
-    func object(entityID: String) -> P.ManagedObject? {
-        return realm.object(ofType: P.ManagedObject.self, forPrimaryKey: entityID)
+    var managedObjects: Results<P.ManagedObject> {
+        realm.objects(P.ManagedObject.self)
     }
 
-    func collection() -> Results<P.ManagedObject> {
-        return realm.objects(P.ManagedObject.self)
+    var objects: [P] {
+        managedObjects.translated(type: P.self)
     }
 
     func persist(object: P) {
@@ -51,70 +63,19 @@ class RealmDAO<P: Persistable>: DAO {
         }
     }
 
-    func persist(object: P, success: (() -> Void)? = nil, failure: ((NSError) -> Void)? = nil) {
-        do {
-            try realm.write {
-                realm.add(object.translate(), update: .all)
-            }
-        } catch let error as NSError {
-            guard failure != nil else { return }
-            failure!(error)
-        }
-
-        guard success != nil else { return }
-        success!()
-    }
-
-    func persistAll(objects: [P]) {
+    func persist(objects: [P]) {
         try? realm.write {
             realm.add(objects.asList(), update: .all)
         }
     }
 
-    func erase(object: P) {
-        guard let existing = realm.object(ofType: P.ManagedObject.self, forPrimaryKey: object.translate().id) else {
-            return
-        }
-
+    func erase(managedObject: P.ManagedObject) {
         try? realm.write {
-            realm.delete(existing, cascading: true)
+            realm.delete(managedObject, cascading: true)
         }
     }
 
-    func erase(objects: [P]) {
-        for object in objects {
-            erase(object: object)
-        }
-    }
-
-    func erase() {
-        try? realm.write {
-            let objects = realm.objects(P.ManagedObject.self)
-            realm.delete(objects, cascading: true)
-        }
-    }
-}
-
-extension RealmDAO {
-    func object(first: Bool) -> P.ManagedObject? {
-        return first ? collection().first : collection().last
-    }
-
-    func object(by entityID: String) -> P? {
-        return object(entityID: entityID)?.translate(P.self)
-    }
-
-    func allObjects() -> [P] {
-        return collection().translated(type: P.self)
-    }
-
-    func erase(by entityID: String) {
-        guard let existing = realm.object(ofType: P.ManagedObject.self, forPrimaryKey: entityID) else {
-            return
-        }
-
-        try? realm.write {
-            realm.delete(existing, cascading: true)
-        }
+    func erase(managedObjects: [P.ManagedObject]) {
+        managedObjects.forEach { erase(managedObject: $0) }
     }
 }

@@ -13,9 +13,9 @@ final class CitiesListVM: Reactor, Coordinatable, Interactable {
     typealias Interactor = CitiesListInteractor
 
     enum Action {
+        case viewLoaded
         case fetchCities
         case addCityTap
-        case deleteCity(Int)
         case showCity(Int)
     }
 
@@ -40,19 +40,20 @@ final class CitiesListVM: Reactor, Coordinatable, Interactable {
     // MARK: - Public
 
     init() {
-        
+
     }
 
     func mutate(action: Action) {
         switch action {
+        case .viewLoaded:
+            interactor.citiesUpdated
+                .bind { [weak self] in self?.action.accept(.fetchCities) }
+                .disposed(by: bag)
         case .fetchCities:
             interact(interactor.updateCitiesWeather(),
                      complete: CitiesListVM.citiesWeatherUpdated,
                      error: CitiesListVM.citiesWeatherUpdateFailed,
                      inProgress: Mutation.setLoading)
-        case .deleteCity(let cityId):
-            interact(interactor.deleteCity(cityId),
-                     complete: CitiesListVM.citiesWeatherDeleted)
         case .addCityTap:
             coordinator.addCity()
         case .showCity(let cityId):
@@ -71,6 +72,7 @@ final class CitiesListVM: Reactor, Coordinatable, Interactable {
         case .addCity(let cityId):
             break
         case .deleteCity(let cityId):
+            interactor.deleteCity(cityId)
             if let index = state.citiesWeather.firstIndex(where: { $0.cityId == cityId }) {
                 state.citiesWeather.remove(at: index)
             }

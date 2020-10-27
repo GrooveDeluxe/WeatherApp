@@ -19,9 +19,9 @@ final class AddCityInteractor {
     }
 
     func addCityToDB(_ city: City) {
-        if let object = cityDao.collection().first(where: { $0.cityId == city.cityId }) {
-            cityDao.erase(by: object.id)
-        }
+        let objects = cityDao.managedObjects.filter { $0.cityId == city.cityId }
+        cityDao.erase(managedObjects: Array(objects))
+
         cityDao.persist(object: city)
     }
 }

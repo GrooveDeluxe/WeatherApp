@@ -54,6 +54,20 @@ extension Results {
     }
 }
 
+extension Sequence where Element == PersistableObject {
+//    func sum() -> Int {
+//        var result = 0
+//        _ = self.map { result += $0 }
+//        return result
+//    }
+    func translated<P: Persistable>(type: P.Type) -> [P] {
+        return compactMap {
+            guard let managedObject = $0 as? P.ManagedObject else { return nil }
+            return P(managedObject: managedObject)
+        }
+    }
+}
+
 // MARK: - DB Translation Observable
 
 extension ObservableType where Element: PersistableObject {

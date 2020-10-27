@@ -5,6 +5,8 @@
 
 import RxSwift
 import Moya
+import RealmSwift
+import RxRelay
 
 final class CitiesListInteractor {
 
@@ -12,17 +14,30 @@ final class CitiesListInteractor {
 
     private let provider = MoyaProvider<WeatherTarget>(plugins: [NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(logOptions: .verbose))])
 
+    private var observeToken: NotificationToken!
+
+    private lazy var _citiesUpdated = PublishRelay<Void>()
+    lazy var citiesUpdated: Observable<Void> = {
+        observeToken = cityDao.managedObjects.observe { (change) in
+            self._citiesUpdated.accept(())
+        }
+        return _citiesUpdated.asObservable()
+    }()
+
     func updateCitiesWeather() -> Single<[CityWeather]> {
-        let cities = cityDao.allObjects()
+        let cities = cityDao.objects
         guard cities.count > 0 else { return .just([]) }
         return provider.rx.request(.weatherByCityIds(cities.map({ $0.cityId })))
             .map(CityGroupResponse.self)
             .map { $0.list.domainModels }
     }
 
-    func deleteCity(_ cityId: Int) -> Single<Int> {
-        guard let object = cityDao.collection().first(where: { $0.cityId == cityId }) else { return .never() }
-        cityDao.erase(by: object.id)
-        return .just(cityId)
+    func deleteCity(_ cityId: Int) {
+        let objects = cityDao.managedObjects.filter({ $0.cityId == cityId })
+        cityDao.erase(managedObjects: Array(objects))
+    }
+
+    func observeCitiesChanges()  {
+
     }
 }

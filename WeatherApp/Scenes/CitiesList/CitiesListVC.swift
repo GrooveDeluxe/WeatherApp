@@ -100,6 +100,7 @@ final class CitiesListVC: BaseVC, ReactorHolder {
         setupUI()
         bind()
 
+        fire(action: .viewLoaded)
         fire(action: .fetchCities)
     }
 }
@@ -127,8 +128,8 @@ private extension CitiesListVC {
 
             tableView.rx.modelDeleted(CityWeather.self)
                 .map { $0.cityId }
-                .map(ViewModel.Action.deleteCity)
-                .bind(to: viewModel.action),
+                .map(ViewModel.Mutation.deleteCity)
+                .bind(to: viewModel.mutation),
 
             tableView.rx.itemSelected
                 .bind { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) },
