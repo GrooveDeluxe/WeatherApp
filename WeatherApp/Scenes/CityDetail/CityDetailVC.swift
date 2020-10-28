@@ -45,15 +45,9 @@ private extension CityDetailVC {
     func bind() {
         disposeBag.insert([
             viewModel.state
-                .map { $0.forecasts }
-                .distinctUntilChanged()
-                .map { forecasts in Dictionary(grouping: forecasts, by: { $0.groupingDate }).mapToRowModels() }
-                .map { models in
-                    models
-                        .map { forecast in ForecastRowView(model: forecast) }
-                }
+                .map { $0.forecastModels }
                 .bind { [weak self] in
-                    self?.setForecastRows($0)
+                    self?.setForecastRowModels($0)
                 }
         ])
     }
@@ -75,22 +69,9 @@ private extension CityDetailVC {
         }
     }
 
-    func setForecastRows(_ rows: [ForecastRowView]) {
+    func setForecastRowModels(_ models: [ForecastRowViewModel]) {
+        let rows = models.map { ForecastRowView(model: $0) }
         stackView.removeAllArrangedSubviews()
         stackView.add(arrangedSubviews: rows)
-    }
-}
-
-// MARK: - Utils -
-
-private extension CityDetailVC {
-    func mapForecastsToViewModels() {
-
-    }
-}
-
-extension Dictionary where Key == Date?, Value == [Forecast] {
-    func mapToRowModels() -> [ForecastRowViewModel] {
-        keys.map { ForecastRowViewModel(forecasts: self[$0] ?? []) }.sorted(by: { $0.groupingDate < $1.groupingDate })
     }
 }

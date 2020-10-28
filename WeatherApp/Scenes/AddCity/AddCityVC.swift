@@ -61,6 +61,12 @@ final class AddCityVC: BaseVC, ReactorHolder {
         setupUI()
         bind()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        textField.becomeFirstResponder()
+    }
 }
 
 // MARK: - Bindings -
@@ -97,6 +103,7 @@ private extension AddCityVC {
 
 private extension AddCityVC {
     func setupUI() {
+
         view.addSubview(textFieldContainer)
         textFieldContainer.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(32)

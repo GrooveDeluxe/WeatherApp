@@ -148,6 +148,10 @@ private extension CitiesListVC {
 
 private extension CitiesListVC {
     func setupUI() {
+
+        navigationItem.title = DateFormatter.ddMMMM.string(from: Date())
+        navigationItem.backButtonTitle = "Назад"
+
         navigationItem.rightBarButtonItem = addButton
 
         view.addSubview(tableView)

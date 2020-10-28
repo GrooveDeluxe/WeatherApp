@@ -20,6 +20,13 @@ class BaseVC: UIViewController, DisposeBagHolder {
         view.layoutMargins = .zero
     }
 
+    // MARK: - Init
+
+    convenience init(title: String) {
+        self.init()
+        navigationItem.title = title
+    }
+
     public init() {
         super.init(nibName: nil, bundle: nil)
     }

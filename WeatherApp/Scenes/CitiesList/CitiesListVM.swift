@@ -85,7 +85,8 @@ final class CitiesListVM: Reactor, Coordinatable, Interactable {
 
 private extension CitiesListVM {
     func citiesWeatherUpdated(_ citiesWeather: [CityWeather]) {
-        make(.setLoading(false), .setCitiesWeather(citiesWeather))
+        let sorted = citiesWeather.sorted(by: { $0.cityName < $1.cityName })
+        make(.setLoading(false), .setCitiesWeather(sorted))
     }
 
     func citiesWeatherUpdateFailed(_ error: Error) {

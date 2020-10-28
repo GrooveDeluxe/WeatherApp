@@ -5,6 +5,14 @@
 
 import Foundation
 
+extension DateFormatter {
+    static var ddMMMM: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.timeZone   = TimeZone.autoupdatingCurrent
+        formatter.dateFormat = "dd MMMM"
+        return formatter
+    }
+}
 private var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
     formatter.timeZone   = TimeZone.autoupdatingCurrent

@@ -21,7 +21,7 @@ final class CitiesListInteractor {
         observeToken = cityDao.managedObjects.observe { (change) in
             self._citiesUpdated.accept(())
         }
-        return _citiesUpdated.asObservable()
+        return _citiesUpdated.debounce(.milliseconds(500), scheduler: MainScheduler.instance).asObservable()
     }()
 
     func updateCitiesWeather() -> Single<[CityWeather]> {
@@ -35,9 +35,5 @@ final class CitiesListInteractor {
     func deleteCity(_ cityId: Int) {
         let objects = cityDao.managedObjects.filter({ $0.cityId == cityId })
         cityDao.erase(managedObjects: Array(objects))
-    }
-
-    func observeCitiesChanges()  {
-
     }
 }

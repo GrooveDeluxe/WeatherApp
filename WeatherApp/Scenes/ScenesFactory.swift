@@ -28,7 +28,7 @@ final class ScenesFactory {
     }
 
     func showCity(cityId: Int) -> UIViewController {
-        let vc = CityDetailVC()
+        let vc = CityDetailVC(title: "Прогноз")
         vc.viewModel = CityDetailVM(cityId: cityId)
         vc.viewModel.inject(CityDetailInteractor())
         return vc
