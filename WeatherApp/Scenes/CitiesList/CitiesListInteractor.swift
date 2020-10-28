@@ -36,4 +36,8 @@ final class CitiesListInteractor {
         let objects = cityDao.managedObjects.filter({ $0.cityId == cityId })
         cityDao.erase(managedObjects: Array(objects))
     }
+
+    func cities() -> [City] {
+        cityDao.objects
+    }
 }

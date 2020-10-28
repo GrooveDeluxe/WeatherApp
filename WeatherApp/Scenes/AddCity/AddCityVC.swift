@@ -19,6 +19,7 @@ final class AddCityVC: BaseVC, ReactorHolder {
 
     private lazy var textField: UITextField = {
         let textField = UITextField()
+        textField.placeholder = "Название города"
         textField.font = .medium17
         textField.textColor = .appBlack
         textField.autocorrectionType = .no

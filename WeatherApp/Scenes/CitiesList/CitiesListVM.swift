@@ -85,7 +85,22 @@ final class CitiesListVM: Reactor, Coordinatable, Interactable {
 
 private extension CitiesListVM {
     func citiesWeatherUpdated(_ citiesWeather: [CityWeather]) {
-        let sorted = citiesWeather.sorted(by: { $0.cityName < $1.cityName })
+        let cities = interactor.cities()
+        let prepared = citiesWeather.map { item in
+            CityWeather(
+                cityId: item.cityId,
+                cityName: cities.first(where: { $0.cityId == item.cityId })?.name ?? item.cityName,
+                temperature: item.temperature,
+                feelsLike:  item.feelsLike,
+                description:  item.description,
+                visibility:  item.visibility,
+                pressure:  item.pressure,
+                humidity:  item.humidity,
+                windSpeed:  item.windSpeed,
+                windDegree:  item.windDegree
+            )
+        }
+        let sorted = prepared.sorted(by: { $0.cityName < $1.cityName })
         make(.setLoading(false), .setCitiesWeather(sorted))
     }
 
