@@ -9,7 +9,17 @@ struct CityWeather {
     let cityId: Int
     let cityName: String
     let temperature: Double
+    let feelsLike: Int
+    let description: String
+    let visibility: Int
     let pressure: Int
+    let humidity: Int
+    let windSpeed: Double?
+    let windDegree: Int?
+
+    var visibilityKM: String {
+        String(format: "%.1f", Double(visibility) / 1000)
+    }
 }
 
 extension CityWeather: Equatable {}
@@ -20,7 +30,13 @@ extension CityResponse {
             cityId: id,
             cityName: name,
             temperature: main.tempCelsius,
-            pressure: main.pressure
+            feelsLike: Int(main.feelsLikeCelsius),
+            description: weather.first?.description ?? "",
+            visibility: visibility,
+            pressure: main.pressure,
+            humidity: main.humidity,
+            windSpeed: wind?.speed,
+            windDegree: wind?.deg
         )
     }
 }

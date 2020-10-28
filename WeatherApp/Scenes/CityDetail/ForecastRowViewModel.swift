@@ -39,10 +39,10 @@ struct ForecastRowViewModel {
             date = nil
         }
 
-        temp = String(format: "%.f℃", forecasts.averageTemp)
-        minTemp = String(format: "%.f℃", forecasts.averageMinTemp)
-        maxTemp = String(format: "%.f℃", forecasts.averageMaxTemp)
-        feelsLike = String(format: "%.f℃", forecasts.averageFeelsLike)
+        temp = String(format: "%.f ℃", forecasts.averageTemp)
+        minTemp = String(format: "%.f ℃", forecasts.averageMinTemp)
+        maxTemp = String(format: "%.f ℃", forecasts.averageMaxTemp)
+        feelsLike = String(format: "%.f ℃", forecasts.averageFeelsLike)
         pressure =  "\(forecasts.averagePressure)"
         humidity = "\(forecasts.averageHumidity)"
 
