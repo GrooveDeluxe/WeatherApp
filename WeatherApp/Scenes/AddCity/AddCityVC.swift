@@ -13,8 +13,6 @@ final class AddCityVC: BaseVC, ReactorHolder {
 
     // MARK: - Properties
 
-    let bag = DisposeBag()
-
     var viewModel: ViewModel!
 
     // MARK: -

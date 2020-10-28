@@ -5,27 +5,24 @@
 
 import RxSwift
 
-final class CityDetailVM: Reactor/*, Coordinatable, Interactable*/ {
+final class CityDetailVM: Reactor, Coordinatable, Interactable {
 
-//    typealias Coordinator = AddCityCoordinator
-//    typealias Interactor = AddCityInteractor
+    typealias Coordinator = CityDetailCoordinator
+    typealias Interactor = CityDetailInteractor
 
     enum Action {
-        case fetchCities
-        case addCityTap
-        case deleteCity(Int)
-        case showCity(Int)
+        case fetchForecast
     }
 
     enum Mutation {
         case setLoading(Bool)
-        case setCitiesWeather([CityWeather])
-        case addCity(Int)
-        case deleteCity(Int)
+        case setForecasts([Forecast])
     }
 
     struct State {
         var cityId: Int
+        var isLoading: Bool = false
+        var forecasts: [Forecast] = []
     }
 
     // MARK: - Properties
@@ -41,12 +38,36 @@ final class CityDetailVM: Reactor/*, Coordinatable, Interactable*/ {
     }
 
     func mutate(action: Action) {
-
+        switch action {
+        case .fetchForecast:
+            interact(interactor.forecastByCityId(currentState.cityId),
+                     complete: CityDetailVM.forecastUpdated,
+                     error: CityDetailVM.forecastUpdateFailed,
+                     inProgress: Mutation.setLoading)
+        }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
-
+        switch mutation {
+        case .setLoading(let isLoading):
+            state.isLoading = isLoading
+        case .setForecasts(let forecasts):
+            state.forecasts = forecasts
+        }
         return state
+    }
+}
+
+// MARK: - Private -
+
+private extension CityDetailVM {
+    func forecastUpdated(_ forecasts: [Forecast]) {
+        make(.setLoading(false), .setForecasts(forecasts))
+    }
+
+    func forecastUpdateFailed(_ error: Error) {
+        make(.setLoading(false), .setForecasts([]))
+        coordinator.showAlert(title: "Ошибка", message: error.localizedDescription, actions: [.close])
     }
 }

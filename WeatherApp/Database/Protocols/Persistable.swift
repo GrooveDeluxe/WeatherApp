@@ -20,4 +20,3 @@ extension Persistable {
         return self.managedObject()
     }
 }
-

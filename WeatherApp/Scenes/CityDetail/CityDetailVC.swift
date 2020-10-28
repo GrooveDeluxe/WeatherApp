@@ -11,30 +11,21 @@ final class CityDetailVC: BaseVC, ReactorHolder {
 
     // MARK: - Properties
 
-    let bag = DisposeBag()
-
     var viewModel: ViewModel!
 
     // MARK: -
 
-    private lazy var textField: UITextField = {
-        let textField = UITextField()
-        textField.font = .medium17
-        textField.textColor = .appBlack
-        return textField
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        return scrollView
     }()
 
-    private lazy var textFieldContainer: UIView = {
-        let container = UIView()
-        container.layer.cornerRadius = 8
-        container.layer.borderWidth = 1
-        container.layer.borderColor = UIColor.appGray1.cgColor
-        container.addSubview(textField)
-        textField.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(16)
-        }
-        return container
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(.vertical, spacing: 8, views: rows)
+        return stackView
     }()
+
+    private lazy var rows: [ForecastRowView] = []
 
     // MARK: - Override
 
@@ -44,7 +35,7 @@ final class CityDetailVC: BaseVC, ReactorHolder {
         setupUI()
         bind()
 
-        fire(action: .fetchCities)
+        fire(action: .fetchForecast)
     }
 }
 
@@ -53,7 +44,17 @@ final class CityDetailVC: BaseVC, ReactorHolder {
 private extension CityDetailVC {
     func bind() {
         disposeBag.insert([
-
+            viewModel.state
+                .map { $0.forecasts }
+                .distinctUntilChanged()
+                .map { forecasts in Dictionary(grouping: forecasts, by: { $0.groupingDate }).mapToRowModels() }
+                .map { models in
+                    models
+                        .map { forecast in ForecastRowView(model: forecast) }
+                }
+                .bind { [weak self] in
+                    self?.setForecastRows($0)
+                }
         ])
     }
 }
@@ -62,9 +63,34 @@ private extension CityDetailVC {
 
 private extension CityDetailVC {
     func setupUI() {
-        view.addSubview(textFieldContainer)
-        textFieldContainer.snp.makeConstraints {
-            $0.left.top.right.equalToSuperview()
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
+
+        scrollView.addSubview(stackView)
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalTo(view.snp.width)
+        }
+    }
+
+    func setForecastRows(_ rows: [ForecastRowView]) {
+        stackView.removeAllArrangedSubviews()
+        stackView.add(arrangedSubviews: rows)
+    }
+}
+
+// MARK: - Utils -
+
+private extension CityDetailVC {
+    func mapForecastsToViewModels() {
+
+    }
+}
+
+extension Dictionary where Key == Date?, Value == [Forecast] {
+    func mapToRowModels() -> [ForecastRowViewModel] {
+        keys.map { ForecastRowViewModel(forecasts: self[$0] ?? []) }.sorted(by: { $0.groupingDate < $1.groupingDate })
     }
 }

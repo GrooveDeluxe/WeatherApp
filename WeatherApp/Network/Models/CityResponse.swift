@@ -41,24 +41,43 @@ struct Weather: Decodable {
     let id: Int
     let main: String
     let description: String
-    let icon: String
+    private let icon: String
+
+    var iconUrl: URL? {
+        URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
+    }
 }
 
 struct Main: Decodable {
     private let temp: Double
-    let feels_like: Double
+    private let feels_like: Double
     let temp_min: Double
     let temp_max: Double
     let pressure: Int
     let humidity: Int
+    let sea_level: Int?
+    let grnd_level: Int?
+    let temp_kf: Double?
 
-    var kelvin: Double {
-        temp
-    }
-
-    var celsius: Double {
+    var tempCelsius: Double {
         kelvinToCelsius(temp)
     }
+
+    var feelsLikeCelsius: Double {
+        kelvinToCelsius(feels_like)
+    }
+
+    var tempMinCelsius: Double {
+        kelvinToCelsius(temp_min)
+    }
+
+    var tempMaxCelsius: Double {
+        kelvinToCelsius(temp_max)
+    }
+
+//    var pressureMMHG: Int {
+//        Int((Double(pressure) / 1000) * 7.50062)
+//    }
 }
 
 struct Wind: Decodable {
@@ -82,4 +101,5 @@ struct Sys: Decodable {
     let country: String?
     let sunrise: TimeInterval?
     let sunset: TimeInterval?
+    let pod: String?
 }

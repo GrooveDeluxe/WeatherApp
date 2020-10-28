@@ -72,7 +72,11 @@ extension Reactor {
     }
 
     public var state: Observable<State> {
-        return _state.asObservable()
+        _state.asObservable()
+    }
+
+    public var currentState: State {
+        _state.value
     }
 
     private var isSubscribed: Bool {

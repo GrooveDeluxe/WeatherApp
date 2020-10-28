@@ -22,14 +22,15 @@ final class ScenesFactory {
     func addCity() -> UIViewController {
         let vc = AddCityVC()
         vc.viewModel = AddCityVM()
-        vc.viewModel.inject(AddCityInteractor())
         vc.viewModel.inject(AddCityCoordinator(vc: vc))
+        vc.viewModel.inject(AddCityInteractor())
         return vc
     }
 
     func showCity(cityId: Int) -> UIViewController {
         let vc = CityDetailVC()
         vc.viewModel = CityDetailVM(cityId: cityId)
+        vc.viewModel.inject(CityDetailInteractor())
         return vc
     }
 }

@@ -26,8 +26,6 @@ final class CitiesListVC: BaseVC, ReactorHolder {
 
     // MARK: - Properties
 
-    let bag = DisposeBag()
-
     var viewModel: ViewModel!
 
     // MARK: -

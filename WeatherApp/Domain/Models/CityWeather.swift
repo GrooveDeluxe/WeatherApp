@@ -19,7 +19,7 @@ extension CityResponse {
         CityWeather(
             cityId: id,
             cityName: name,
-            temperature: main.celsius,
+            temperature: main.tempCelsius,
             pressure: main.pressure
         )
     }
