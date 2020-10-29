@@ -19,7 +19,7 @@ final class AddCityVC: BaseVC, ReactorHolder {
 
     private lazy var textField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Название города"
+        textField.placeholder = L.cityName.title
         textField.font = .medium17
         textField.textColor = .appBlack
         textField.autocorrectionType = .no
@@ -40,7 +40,7 @@ final class AddCityVC: BaseVC, ReactorHolder {
 
     private lazy var addButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Добавить", for: .normal)
+        button.setTitle(L.common.add, for: .normal)
         button.titleLabel?.font = .bold20
         button.titleLabel?.textColor = .appWhite
         button.setBackgroundImage(UIColor.appBlue.image(), for: .normal)

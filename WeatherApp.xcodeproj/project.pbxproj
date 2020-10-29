@@ -50,6 +50,9 @@
 		427D0CC02549ABF800EABD91 /* String+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427D0CBF2549ABF800EABD91 /* String+Convenience.swift */; };
 		427D0CE6254AB50500EABD91 /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427D0CE5254AB50500EABD91 /* UIImageView+URL.swift */; };
 		427D0CF6254AE16700EABD91 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427D0CF5254AE16700EABD91 /* NetworkError.swift */; };
+		427D0CFD254AE53500EABD91 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427D0CFC254AE53500EABD91 /* Strings+Generated.swift */; };
+		427D0D02254AE5CF00EABD91 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 427D0D01254AE5CF00EABD91 /* swiftgen.yml */; };
+		427D0D56254AEA4000EABD91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 427D0D54254AEA4000EABD91 /* Localizable.strings */; };
 		42A845BA2548161A00A2BD00 /* AddCityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A845B92548161A00A2BD00 /* AddCityVC.swift */; };
 		42A845BF25482C9600A2BD00 /* CityDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A845BE25482C9600A2BD00 /* CityDetailVC.swift */; };
 		42A845C425482CA700A2BD00 /* CityDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A845C325482CA700A2BD00 /* CityDetailVM.swift */; };
@@ -135,6 +138,10 @@
 		427D0CBF2549ABF800EABD91 /* String+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Convenience.swift"; sourceTree = "<group>"; };
 		427D0CE5254AB50500EABD91 /* UIImageView+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
 		427D0CF5254AE16700EABD91 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		427D0CFC254AE53500EABD91 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		427D0D01254AE5CF00EABD91 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
+		427D0D55254AEA4000EABD91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		427D0D5D254AEA5900EABD91 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		42A845B92548161A00A2BD00 /* AddCityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityVC.swift; sourceTree = "<group>"; };
 		42A845BE25482C9600A2BD00 /* CityDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailVC.swift; sourceTree = "<group>"; };
 		42A845C325482CA700A2BD00 /* CityDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailVM.swift; sourceTree = "<group>"; };
@@ -142,7 +149,6 @@
 		42A8460E254840B200A2BD00 /* AddCityInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityInteractor.swift; sourceTree = "<group>"; };
 		42A846132548437C00A2BD00 /* AddCityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityCoordinator.swift; sourceTree = "<group>"; };
 		42A846192548455300A2BD00 /* UINavigationController+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Convenience.swift"; sourceTree = "<group>"; };
-		42A8462D254852FA00A2BD00 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		42A8464B2548956200A2BD00 /* CityDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailInteractor.swift; sourceTree = "<group>"; };
 		42A846502548AB5A00A2BD00 /* ForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
 		42A846552549425900A2BD00 /* ForecastRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRowView.swift; sourceTree = "<group>"; };
@@ -423,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				42164BF12542EB75005B52BA /* Constants */,
+				427D0CFB254AE53500EABD91 /* Generated */,
 				424B6B3725402E0800EDC41E /* Application */,
 				42164B2A2540931D005B52BA /* Core */,
 				422386B52545FCE90051A7E9 /* Domain */,
@@ -430,8 +437,9 @@
 				42164BD22541E97C005B52BA /* Network */,
 				42164B382540971F005B52BA /* Extensions */,
 				424B6B492540313E00EDC41E /* Scenes */,
-				424B6A4D253F1CDE00EDC41E /* Assets.xcassets */,
+				427D0D09254AE62F00EABD91 /* Resources */,
 				424B6A4F253F1CDE00EDC41E /* LaunchScreen.storyboard */,
+				427D0D01254AE5CF00EABD91 /* swiftgen.yml */,
 				424B6A52253F1CDE00EDC41E /* Info.plist */,
 			);
 			path = WeatherApp;
@@ -492,6 +500,23 @@
 			path = ImageView;
 			sourceTree = "<group>";
 		};
+		427D0CFB254AE53500EABD91 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				427D0CFC254AE53500EABD91 /* Strings+Generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		427D0D09254AE62F00EABD91 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				424B6A4D253F1CDE00EDC41E /* Assets.xcassets */,
+				427D0D54254AEA4000EABD91 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		42A846182548452A00A2BD00 /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +556,7 @@
 			buildConfigurationList = 424B6A6B253F1CDE00EDC41E /* Build configuration list for PBXNativeTarget "WeatherApp" */;
 			buildPhases = (
 				E5F156194FBE7A00FA5EF170 /* [CP] Check Pods Manifest.lock */,
+				427D0CFA254AE4D500EABD91 /* SwiftGen */,
 				424B6A3D253F1CDD00EDC41E /* Sources */,
 				424B6A3E253F1CDD00EDC41E /* Frameworks */,
 				424B6A3F253F1CDD00EDC41E /* Resources */,
@@ -614,7 +640,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ru,
 			);
 			mainGroup = 424B6A38253F1CDD00EDC41E;
 			productRefGroup = 424B6A42253F1CDD00EDC41E /* Products */;
@@ -633,8 +658,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427D0D56254AEA4000EABD91 /* Localizable.strings in Resources */,
 				424B6A51253F1CDE00EDC41E /* LaunchScreen.storyboard in Resources */,
 				424B6A4E253F1CDE00EDC41E /* Assets.xcassets in Resources */,
+				427D0D02254AE5CF00EABD91 /* swiftgen.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +682,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		427D0CFA254AE4D500EABD91 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
+		};
 		485A2FE3B95A46177AD5404D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -773,6 +818,7 @@
 				42A845C425482CA700A2BD00 /* CityDetailVM.swift in Sources */,
 				42164BA32541744F005B52BA /* CitiesListItemCell.swift in Sources */,
 				42164C7C2544A42F005B52BA /* CitiesListCoordinator.swift in Sources */,
+				427D0CFD254AE53500EABD91 /* Strings+Generated.swift in Sources */,
 				422386CE2546BC4F0051A7E9 /* CitiesListInteractor.swift in Sources */,
 				422386D42546BD600051A7E9 /* Reactor+Interact.swift in Sources */,
 				42164C812544A504005B52BA /* Coordinatable.swift in Sources */,
@@ -851,9 +897,17 @@
 			isa = PBXVariantGroup;
 			children = (
 				424B6A50253F1CDE00EDC41E /* Base */,
-				42A8462D254852FA00A2BD00 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		427D0D54254AEA4000EABD91 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				427D0D55254AEA4000EABD91 /* Base */,
+				427D0D5D254AEA5900EABD91 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

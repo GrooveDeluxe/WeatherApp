@@ -20,20 +20,20 @@ final class ForecastRowView: UIView {
 
     private let tempLabel = UILabel(style: .title3, text: "")
 
-    private let descriptionLabel = UILabel(style: .bodyGray, text: "")
+    private let descriptionLabel = UILabel(style: .body, text: "")
 
-    private let minTempLabel = UILabel(style: .bodyGray, text: "")
-    private let maxTempLabel = UILabel(style: .bodyGray, text: "")
+    private let minTempLabel = UILabel(style: .body, text: "")
+    private let maxTempLabel = UILabel(style: .body, text: "")
 
-    private let pressureLabel = UILabel(style: .bodyGray, text: "")
+    private let pressureLabel = UILabel(style: .body, text: "")
 
-    private let humidityLabel = UILabel(style: .bodyGray, text: "")
+    private let humidityLabel = UILabel(style: .body, text: "")
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(.vertical, spacing: 8, views: [
             UIStackView(.horizontal, spacing: 8, views: [
                 dateLabel,
-                UIStackView(.horizontal, spacing: 8, views: [weatherIcon,tempLabel])
+                UIStackView(.horizontal, spacing: 8, views: [weatherIcon, tempLabel])
             ]),
             descriptionLabel,
             minTempLabel,
@@ -63,11 +63,11 @@ final class ForecastRowView: UIView {
 
         descriptionLabel.text = model.description?.capitalizingFirstLetter()
 
-        minTempLabel.text = "Мин: \(model.minTemp)"
-        maxTempLabel.text = "Макс: \(model.maxTemp)"
+        minTempLabel.text = L.forecast.minTemp.template(model.minTemp)
+        maxTempLabel.text = L.forecast.maxTemp.template(model.maxTemp)
 
-        pressureLabel.text = "Давление: \(model.pressure) кПа"
-        humidityLabel.text = "Влажность: \(model.humidity)%"
+        pressureLabel.text = L.forecast.pressure.template(model.pressure)
+        humidityLabel.text = L.forecast.humidity.template(model.humidity)
     }
 }
 

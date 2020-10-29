@@ -67,7 +67,7 @@ private extension CityDetailVM {
 
     func forecastUpdateFailed(_ error: Error) {
         make(.setLoading(false), .setForecastModels([]))
-        coordinator.showAlert(title: "Ошибка", message: error.localizedDescription, actions: [.close])
+        coordinator.showAlert(title: L.common.error, message: error.localizedDescription, actions: [.close])
     }
 
     typealias GroupedForecast = (key: String, items: [Forecast])

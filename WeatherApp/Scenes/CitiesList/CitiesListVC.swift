@@ -69,7 +69,7 @@ final class CitiesListVC: BaseVC, ReactorHolder {
         activity.color = .appGray4
         activity.startAnimating()
 
-        let label = UILabel(style: .body, text: "Обновляем", lines: 0, alignment: .center)
+        let label = UILabel(style: .body, text: L.common.updating, lines: 0, alignment: .center)
         let stack = UIStackView(.vertical, spacing: 16, alignment: .center, views: [activity, label])
         container.addSubview(stack)
         stack.snp.makeConstraints {
@@ -81,7 +81,7 @@ final class CitiesListVC: BaseVC, ReactorHolder {
 
     private lazy var emptyView: UIView = {
         let container = UIView()
-        let label = UILabel(style: .body, text: "У Вас не добавлено городов", lines: 0, alignment: .center)
+        let label = UILabel(style: .body, text: L.main.empty.title, lines: 0, alignment: .center)
         container.addSubview(label)
         label.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(16)
@@ -150,7 +150,7 @@ private extension CitiesListVC {
     func setupUI() {
 
         navigationItem.title = DateFormatter.ddMMMM.string(from: Date())
-        navigationItem.backButtonTitle = "Назад"
+        navigationItem.backButtonTitle = L.common.back
 
         navigationItem.rightBarButtonItem = addButton
 

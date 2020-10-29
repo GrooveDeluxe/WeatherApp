@@ -1,0 +1,38 @@
+/* 
+  Localized.strings
+  WeatherApp
+
+  Created by Dmitry Sochnev on 29.10.2020.
+  Copyright © 2020 Applicatura. All rights reserved.
+*/
+
+common.wind.directions = "С,ССВ,СВ,ВСВ,В,ВЮВ,ЮВ,ЮЮВ,Ю,ЮЮЗ,ЮЗ,ЗЮЗ,З,ЗСЗ,СЗ,ССЗ,С";
+common.updating = "Обновление";
+common.back = "Назад";
+common.add = "Добавить";
+common.error = "Ошибка";
+
+
+main.empty.title = "У Вас не добавлено городов";
+
+main.description.template = "Ощущается как %@ ℃. %@";
+main.visibility.template = "Видимость %@ км";
+
+main.pressure.template = "Давление %@ кПа";
+main.humidity.template = "Влажность %@%%";
+
+main.wind.template = "Ветер %@ м/с (%@)";
+
+
+city-name.title = "Название города";
+
+
+forecast.title = "Прогноз";
+forecast.min-temp.template = "Мин: %@";
+forecast.max-temp.template = "Макс: %@";
+
+forecast.pressure.template = "Давление: %@ кПа";
+forecast.humidity.template = "Влажность: %@%%";
+
+
+error.city-not-found = "Город не найден";

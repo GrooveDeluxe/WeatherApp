@@ -30,6 +30,7 @@ final class CitiesListInteractor {
         let cities = cityDao.objects
         guard cities.count > 0 else { return .just([]) }
         return provider.rx.request(.weatherByCityIds(cities.map({ $0.cityId })))
+            .filterError(NetworkErrorModel.self)
             .map(CityGroupResponse.self)
             .map { $0.list.domainModels }
     }

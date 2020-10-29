@@ -56,6 +56,6 @@ private extension AddCityVM {
     }
 
     func cityWeatherUpdateFailed(_ error: Error) {
-        coordinator.showAlert(title: "Ошибка", message: error.localizedDescription, actions: [.close])
+        coordinator.showAlert(title: L.common.error, message: error.localizedDescription, actions: [.close])
     }
 }

@@ -15,9 +15,9 @@ extension NetworkError: LocalizedError where ErrorModel == NetworkErrorModel {
         switch self {
         case .logicError(let error):
             if error.message == "city not found" {
-                return "Город не найден"
+                return L.error.cityNotFound
             }
-            return "Произошла неизвестная ошибка"
+            return error.message
         }
     }
 }

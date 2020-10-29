@@ -1,0 +1,13 @@
+/* 
+  Localized.strings
+  WeatherApp
+
+  Created by Dmitry Sochnev on 29.10.2020.
+  Copyright © 2020 Applicatura. All rights reserved.
+*/
+
+cities-list.item.description.template = "Feels like %@ ℃. %@";
+cities-list.item.visibility.template = "Visibility %@ км";
+
+cities-list.item.pressure.template = "Pressure %@ кПа";
+cities-list.item.humidity.template = "Humidity %@%%";

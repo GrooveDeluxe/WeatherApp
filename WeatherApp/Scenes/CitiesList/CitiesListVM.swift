@@ -104,7 +104,7 @@ private extension CitiesListVM {
 
     func citiesWeatherUpdateFailed(_ error: Error) {
         make(.setLoading(false), .setCitiesWeather([]))
-        coordinator.showAlert(title: "Ошибка", message: error.localizedDescription, actions: [.close])
+        coordinator.showAlert(title: L.common.error, message: error.localizedDescription, actions: [.close])
     }
 
     func citiesWeatherDeleted(_ cityId: Int) {

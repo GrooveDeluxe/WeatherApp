@@ -65,18 +65,18 @@ final class CitiesListItemCell: UITableViewCell {
         weatherIcon.load(url: model.iconUrl)
         cityTempLabel.text = String(format: "%.f ℃", model.temperature)
 
-        descriptionLabel.text = "Ощущается как \(model.feelsLike) ℃. \(model.description.capitalizingFirstLetter())"
-        visibilityLabel.text = "Видимость \(model.visibilityKM) км"
+        let description = L.main.description.template(model.feelsLike, model.description.capitalizingFirstLetter())
+        descriptionLabel.text = description
+        visibilityLabel.text = L.main.visibility.template(model.visibilityKM)
 
-        pressureLabel.text = "Давление \(model.pressure) кПа"
-        humidityLabel.text = "Влажность \(model.humidity)%"
+        pressureLabel.text = L.main.pressure.template(model.pressure)
+        humidityLabel.text = L.main.humidity.template(model.humidity)
 
         if let windSpeed = model.windSpeed, let windDegree = model.windDegree {
-            let directions = "С,ССВ,СВ,ВСВ,В,ВЮВ,ЮВ,ЮЮВ,Ю,ЮЮЗ,ЮЗ,ЗЮЗ,З,ЗСЗ,СЗ,ССЗ,С".split(separator: ",")
+            let directions = L.common.wind.directions.split(separator: ",")
             let speed = String(format: "%.f",windSpeed)
-            windLabel.text = "Ветер \(speed) м/с (\(directions[Int(Double(windDegree) / 22.5)]))"
+            windLabel.text = L.main.wind.template(speed, directions[Int(Double(windDegree) / 22.5)])
         }
-
     }
 }
 

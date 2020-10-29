@@ -1,0 +1,9 @@
+strings:
+  inputs:
+    - WeatherApp/Resources/Base.lproj/Localizable.strings
+  outputs:
+      templatePath: SwiftGenTemplates/custom-structured-swift5.stencil
+      output: WeatherApp/Generated/Strings+Generated.swift
+      params:
+        publicAccess: true
+        enumName: L
