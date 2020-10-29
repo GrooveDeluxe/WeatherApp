@@ -6,7 +6,6 @@
 import UIKit
 
 extension UIFont {
-    static let bold34: UIFont = .systemFont(ofSize: 34.0, weight: .bold)
     static let bold28: UIFont = .systemFont(ofSize: 28.0, weight: .bold)
     static let bold22: UIFont = .systemFont(ofSize: 22.0, weight: .bold)
     static let bold20: UIFont = .systemFont(ofSize: 20.0, weight: .bold)

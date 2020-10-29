@@ -86,10 +86,6 @@ extension UILabel {
         }
 
         private static let attributesInfo: [Self: Attributes] = [
-            .largeTitle: [
-                .font: UIFont.bold34,
-                .foregroundColor: UIColor.appForeground
-            ],
             .title1: [
                 .font: UIFont.bold28,
                 .foregroundColor: UIColor.appForeground
@@ -105,66 +101,6 @@ extension UILabel {
             .body: [
                 .font: UIFont.regular17,
                 .foregroundColor: UIColor.appForeground
-            ],
-            .bodyGray: [
-                .font: UIFont.regular17,
-                .foregroundColor: UIColor.appGray4
-            ],
-            .bodyOrange: [
-                .font: UIFont.regular17,
-                .foregroundColor: UIColor.appOrange
-            ],
-            .bodyRed: [
-                .font: UIFont.regular17,
-                .foregroundColor: UIColor.appRed
-            ],
-            .bodyBold: [
-                .font: UIFont.bold17,
-                .foregroundColor: UIColor.appForeground
-            ],
-            .bodyBoldGray: [
-                .font: UIFont.bold17,
-                .foregroundColor: UIColor.appGray4
-            ],
-            .link: [
-                .font: UIFont.regular17,
-                .foregroundColor: UIColor.appBlue
-            ],
-            .success: [
-                .font: UIFont.regular17,
-                .foregroundColor: UIColor.appGreen
-            ],
-            .failure: [
-                .font: UIFont.regular17,
-                .foregroundColor: UIColor.appRed
-            ],
-            .optionButtonTitle: [
-                .font: UIFont.regular17,
-                .foregroundColor: UIColor.appForeground
-            ],
-            .tertiaryButtonTitle: [
-                .font: UIFont.regular17,
-                .foregroundColor: UIColor.appGray4
-            ],
-            .primaryButtonTitle: [
-                .font: UIFont.medium17,
-                .foregroundColor: UIColor.appWhite
-            ],
-            .textFieldTitle: [
-                .font: UIFont.regular16,
-                .foregroundColor: UIColor.appGray4
-            ],
-            .textFieldText: [
-                .font: UIFont.regular16,
-                .foregroundColor: UIColor.appForeground
-            ],
-            .textFieldPlaceholder: [
-                .font: UIFont.regular16,
-                .foregroundColor: UIColor.appGray3
-            ],
-            .textFieldError: [
-                .font: UIFont.regular16,
-                .foregroundColor: UIColor.appRed
             ],
             .description: [
                 .font: UIFont.regular16,
