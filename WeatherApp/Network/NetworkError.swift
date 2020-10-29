@@ -3,20 +3,41 @@
 //  Copyright © 2020 Applicatura. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+import Moya
 
-enum NetworkError: Error {
-    case undefined
-    case underlying(Error)
+enum NetworkError<ErrorModel: Decodable>: Error {
+    case logicError(ErrorModel)
 }
 
-extension NetworkError: LocalizedError {
+extension NetworkError: LocalizedError where ErrorModel == NetworkErrorModel {
     var errorDescription: String? {
         switch self {
-        case .undefined:
-            return "Undefined network error"
-        case .underlying(let error):
-            return error.localizedDescription
+        case .logicError(let error):
+            if error.message == "city not found" {
+                return "Город не найден"
+            }
+            return "Произошла неизвестная ошибка"
         }
+    }
+}
+
+struct NetworkErrorModel: Decodable {
+    let cod: String
+    let message: String
+}
+
+extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
+    func filterError<ErrorModel: Decodable>(_ errorType: ErrorModel.Type) -> Single<Element> {
+        return flatMap { .just(try $0.filterError(errorType)) }
+    }
+}
+
+public extension Response {
+    func filterError<ErrorModel: Decodable>(_ errorType: ErrorModel.Type) throws -> Response {
+        if let error = try? map(errorType) {
+            throw NetworkError.logicError(error)
+        }
+        return self
     }
 }

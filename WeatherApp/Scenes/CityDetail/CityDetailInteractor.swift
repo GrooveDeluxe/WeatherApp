@@ -14,6 +14,7 @@ final class CityDetailInteractor {
 
     func forecastByCityId(_ cityId: Int) -> Single<[Forecast]> {
         provider.rx.request(.forecastByCityId(cityId))
+            .filterSuccessfulStatusAndRedirectCodes()
             .map(ForecastResponse.self)
             .map { $0.list.domainModels }
     }

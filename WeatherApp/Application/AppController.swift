@@ -21,6 +21,7 @@ final class AppController {
 extension AppController: AppControllerProtocol {
     func setup() {
         initialize()
+        setupAppearance()
         setupInitialViewController()
     }
 }
@@ -33,6 +34,15 @@ extension AppController {
         if cityDao.objects.count == 0 {
             cityDao.persist(objects: Config.defaultCities)
         }
+    }
+
+    func setupAppearance() {
+        let appearance = UINavigationBar.appearance()
+        appearance.tintColor = .appGray4
+        appearance.titleTextAttributes = [
+            .font: UIFont.bold17,
+            .foregroundColor: UIColor.appForeground
+        ]
     }
 
     // MARK: - Initial screen

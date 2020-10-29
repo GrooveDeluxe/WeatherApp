@@ -14,6 +14,7 @@ final class AddCityInteractor {
 
     func weatherByCityName(_ cityName: String) -> Single<CityWeather> {
         provider.rx.request(.weatherByCityName(cityName))
+            .filterError(NetworkErrorModel.self)
             .map(CityResponse.self)
             .map { $0.domainModel }
     }
