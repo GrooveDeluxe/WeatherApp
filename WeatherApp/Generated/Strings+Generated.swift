@@ -12,53 +12,53 @@ import Foundation
 public enum L {
 
   public enum cityName {
-    /// Название города
+    /// City name
     public static let title = L.tr("Localizable", "city-name.title")
   }
 
   public enum common {
-    /// Добавить
+    /// Add
     public static let add = L.tr("Localizable", "common.add")
-    /// Назад
+    /// Back
     public static let back = L.tr("Localizable", "common.back")
-    /// Ошибка
+    /// Error
     public static let error = L.tr("Localizable", "common.error")
-    /// Обновление
+    /// Updating
     public static let updating = L.tr("Localizable", "common.updating")
     public enum wind {
-      /// С,ССВ,СВ,ВСВ,В,ВЮВ,ЮВ,ЮЮВ,Ю,ЮЮЗ,ЮЗ,ЗЮЗ,З,ЗСЗ,СЗ,ССЗ,С
+      /// N,NNE,NE,ENE,E,ESE,SE,SSE,S,SSW,SW,WSW,W,WNW,NW,NNW,N
       public static let directions = L.tr("Localizable", "common.wind.directions")
     }
   }
 
   public enum error {
-    /// Город не найден
+    /// City not found
     public static let cityNotFound = L.tr("Localizable", "error.city-not-found")
   }
 
   public enum forecast {
-    /// Прогноз
+    /// Forecast
     public static let title = L.tr("Localizable", "forecast.title")
     public enum humidity {
-      /// Влажность: %@%%
+      /// Humidity: %@%%
       public static func template(_ p1: Any) -> String {
         return L.tr("Localizable", "forecast.humidity.template", String(describing: p1))
       }
     }
     public enum maxTemp {
-      /// Макс: %@
+      /// Max: %@
       public static func template(_ p1: Any) -> String {
         return L.tr("Localizable", "forecast.max-temp.template", String(describing: p1))
       }
     }
     public enum minTemp {
-      /// Мин: %@
+      /// Min: %@
       public static func template(_ p1: Any) -> String {
         return L.tr("Localizable", "forecast.min-temp.template", String(describing: p1))
       }
     }
     public enum pressure {
-      /// Давление: %@ кПа
+      /// Pressure: %@ hPa
       public static func template(_ p1: Any) -> String {
         return L.tr("Localizable", "forecast.pressure.template", String(describing: p1))
       }
@@ -67,35 +67,35 @@ public enum L {
 
   public enum main {
     public enum description {
-      /// Ощущается как %@ ℃. %@
+      /// Feels like %@ ℃. %@
       public static func template(_ p1: Any, _ p2: Any) -> String {
         return L.tr("Localizable", "main.description.template", String(describing: p1), String(describing: p2))
       }
     }
     public enum empty {
-      /// У Вас не добавлено городов
+      /// You havn't added cities
       public static let title = L.tr("Localizable", "main.empty.title")
     }
     public enum humidity {
-      /// Влажность %@%%
+      /// Humidity %@%%
       public static func template(_ p1: Any) -> String {
         return L.tr("Localizable", "main.humidity.template", String(describing: p1))
       }
     }
     public enum pressure {
-      /// Давление %@ кПа
+      /// Pressure %@ hPa
       public static func template(_ p1: Any) -> String {
         return L.tr("Localizable", "main.pressure.template", String(describing: p1))
       }
     }
     public enum visibility {
-      /// Видимость %@ км
+      /// Visibility %@ km
       public static func template(_ p1: Any) -> String {
         return L.tr("Localizable", "main.visibility.template", String(describing: p1))
       }
     }
     public enum wind {
-      /// Ветер %@ м/с (%@)
+      /// Wind %@ m/s (%@)
       public static func template(_ p1: Any, _ p2: Any) -> String {
         return L.tr("Localizable", "main.wind.template", String(describing: p1), String(describing: p2))
       }

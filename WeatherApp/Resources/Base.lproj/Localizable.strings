@@ -6,33 +6,32 @@
   Copyright © 2020 Applicatura. All rights reserved.
 */
 
-common.wind.directions = "С,ССВ,СВ,ВСВ,В,ВЮВ,ЮВ,ЮЮВ,Ю,ЮЮЗ,ЮЗ,ЗЮЗ,З,ЗСЗ,СЗ,ССЗ,С";
-common.updating = "Обновление";
-common.back = "Назад";
-common.add = "Добавить";
-common.error = "Ошибка";
+common.wind.directions = "N,NNE,NE,ENE,E,ESE,SE,SSE,S,SSW,SW,WSW,W,WNW,NW,NNW,N";
+common.updating = "Updating";
+common.back = "Back";
+common.add = "Add";
+common.error = "Error";
 
 
-main.empty.title = "У Вас не добавлено городов";
+main.empty.title = "You havn't added cities";
 
-main.description.template = "Ощущается как %@ ℃. %@";
-main.visibility.template = "Видимость %@ км";
+main.description.template = "Feels like %@ ℃. %@";
+main.visibility.template = "Visibility %@ km";
 
-main.pressure.template = "Давление %@ кПа";
-main.humidity.template = "Влажность %@%%";
+main.pressure.template = "Pressure %@ hPa";
+main.humidity.template = "Humidity %@%%";
 
-main.wind.template = "Ветер %@ м/с (%@)";
-
-
-city-name.title = "Название города";
+main.wind.template = "Wind %@ m/s (%@)";
 
 
-forecast.title = "Прогноз";
-forecast.min-temp.template = "Мин: %@";
-forecast.max-temp.template = "Макс: %@";
+city-name.title = "City name";
 
-forecast.pressure.template = "Давление: %@ кПа";
-forecast.humidity.template = "Влажность: %@%%";
+forecast.title = "Forecast";
+forecast.min-temp.template = "Min: %@";
+forecast.max-temp.template = "Max: %@";
+
+forecast.pressure.template = "Pressure: %@ hPa";
+forecast.humidity.template = "Humidity: %@%%";
 
 
-error.city-not-found = "Город не найден";
+error.city-not-found = "City not found";

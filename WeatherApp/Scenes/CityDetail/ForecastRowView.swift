@@ -20,14 +20,14 @@ final class ForecastRowView: UIView {
 
     private let tempLabel = UILabel(style: .title3, text: "")
 
-    private let descriptionLabel = UILabel(style: .body, text: "")
+    private let descriptionLabel = UILabel(style: .description, text: "")
 
-    private let minTempLabel = UILabel(style: .body, text: "")
-    private let maxTempLabel = UILabel(style: .body, text: "")
+    private let minTempLabel = UILabel(style: .description, text: "")
+    private let maxTempLabel = UILabel(style: .description, text: "")
 
-    private let pressureLabel = UILabel(style: .body, text: "")
+    private let pressureLabel = UILabel(style: .description, text: "")
 
-    private let humidityLabel = UILabel(style: .body, text: "")
+    private let humidityLabel = UILabel(style: .description, text: "")
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(.vertical, spacing: 8, views: [

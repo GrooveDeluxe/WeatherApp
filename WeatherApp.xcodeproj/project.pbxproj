@@ -141,7 +141,6 @@
 		427D0CFC254AE53500EABD91 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		427D0D01254AE5CF00EABD91 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
 		427D0D55254AEA4000EABD91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		427D0D5D254AEA5900EABD91 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		42A845B92548161A00A2BD00 /* AddCityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityVC.swift; sourceTree = "<group>"; };
 		42A845BE25482C9600A2BD00 /* CityDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailVC.swift; sourceTree = "<group>"; };
 		42A845C325482CA700A2BD00 /* CityDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailVM.swift; sourceTree = "<group>"; };
@@ -155,6 +154,8 @@
 		42A8465D2549439200A2BD00 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		42A8466525495F8800A2BD00 /* CityDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailCoordinator.swift; sourceTree = "<group>"; };
 		42A8466D254969BA00A2BD00 /* ForecastRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRowViewModel.swift; sourceTree = "<group>"; };
+		42A88E60254AFD97000DF757 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		42A88E61254AFD97000DF757 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		826A31AF9AAAA3B64980D9AF /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8B3E1DFC7AAB71A46DDB63A4 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B690C0337A0EB00F4E0EF0B0 /* Pods_WeatherApp_WeatherAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp_WeatherAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -640,6 +641,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 424B6A38253F1CDD00EDC41E;
 			productRefGroup = 424B6A42253F1CDD00EDC41E /* Products */;
@@ -897,6 +899,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				424B6A50253F1CDE00EDC41E /* Base */,
+				42A88E60254AFD97000DF757 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -905,7 +908,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				427D0D55254AEA4000EABD91 /* Base */,
-				427D0D5D254AEA5900EABD91 /* en */,
+				42A88E61254AFD97000DF757 /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
