@@ -8,7 +8,19 @@ import UIKit
 final class ForecastRowView: UIView {
 
     private let dateLabel = UILabel(style: .title3, text: "")
+
+    private lazy var weatherIcon: UIImageView = {
+        let icon = UIImageView()
+        icon.contentMode = .scaleAspectFit
+        icon.snp.makeConstraints {
+            $0.size.lessThanOrEqualTo(CGSize(width: 40, height: 40))
+        }
+        return icon
+    }()
+
     private let tempLabel = UILabel(style: .title3, text: "")
+
+    private let descriptionLabel = UILabel(style: .bodyGray, text: "")
 
     private let minTempLabel = UILabel(style: .bodyGray, text: "")
     private let maxTempLabel = UILabel(style: .bodyGray, text: "")
@@ -17,23 +29,18 @@ final class ForecastRowView: UIView {
 
     private let humidityLabel = UILabel(style: .bodyGray, text: "")
 
-    private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(.vertical, spacing: 8, views: [dateStackView, tempStackView, pressureHumidityStackView])
-        return stackView
-    }()
-
-    private lazy var dateStackView: UIStackView = {
-        let stackView = UIStackView(.horizontal, spacing: 8, views: [dateLabel, tempLabel])
-        return stackView
-    }()
-
-    private lazy var tempStackView: UIStackView = {
-        let stackView = UIStackView(.vertical, spacing: 8, views: [minTempLabel, maxTempLabel])
-        return stackView
-    }()
-
-    private lazy var pressureHumidityStackView: UIStackView = {
-        let stackView = UIStackView(.vertical, spacing: 8, views: [pressureLabel, humidityLabel])
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(.vertical, spacing: 8, views: [
+            UIStackView(.horizontal, spacing: 8, views: [
+                dateLabel,
+                UIStackView(.horizontal, spacing: 8, views: [weatherIcon,tempLabel])
+            ]),
+            descriptionLabel,
+            minTempLabel,
+            maxTempLabel,
+            pressureLabel,
+            humidityLabel
+        ])
         return stackView
     }()
 
@@ -51,7 +58,10 @@ final class ForecastRowView: UIView {
 
         dateLabel.text = model.date
 
+        weatherIcon.load(url: model.iconUrl)
         tempLabel.text = model.temp
+
+        descriptionLabel.text = model.description?.capitalizingFirstLetter()
 
         minTempLabel.text = "Мин: \(model.minTemp)"
         maxTempLabel.text = "Макс: \(model.maxTemp)"
@@ -63,8 +73,8 @@ final class ForecastRowView: UIView {
 
 private extension ForecastRowView {
     func setup() {
-        addSubview(mainStackView)
-        mainStackView.snp.makeConstraints {
+        addSubview(stackView)
+        stackView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(16)
         }
     }

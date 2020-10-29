@@ -16,6 +16,7 @@ struct CityWeather {
     let humidity: Int
     let windSpeed: Double?
     let windDegree: Int?
+    let iconUrl: URL?
 
     var visibilityKM: String {
         String(format: "%.1f", Double(visibility) / 1000)
@@ -36,7 +37,8 @@ extension CityResponse {
             pressure: main.pressure,
             humidity: main.humidity,
             windSpeed: wind?.speed,
-            windDegree: wind?.deg
+            windDegree: wind?.deg,
+            iconUrl: weather.first?.iconUrl
         )
     }
 }

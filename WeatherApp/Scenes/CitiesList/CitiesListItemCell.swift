@@ -8,6 +8,16 @@ import UIKit
 final class CitiesListItemCell: UITableViewCell {
 
     private let cityNameLabel = UILabel(style: .title1, text: "", lines: 0)
+
+    private lazy var weatherIcon: UIImageView = {
+        let icon = UIImageView()
+        icon.contentMode = .scaleAspectFit
+        icon.snp.makeConstraints {
+            $0.size.lessThanOrEqualTo(CGSize(width: 40, height: 40))
+        }
+        return icon
+    }()
+
     private let cityTempLabel = UILabel(style: .title2, text: "")
 
     private let descriptionLabel = UILabel(style: .description, text: "", lines: 0)
@@ -19,14 +29,20 @@ final class CitiesListItemCell: UITableViewCell {
     private lazy var mainContentView: UIView = {
         let container = UIView()
         let stackView = UIStackView(.vertical, spacing: 8, views: [
-            UIStackView(.horizontal, spacing: 8, distribution: .equalSpacing, alignment: .center,
-                               views: [cityNameLabel, cityTempLabel]),
+            UIStackView(.horizontal, spacing: 8, distribution: .equalSpacing, alignment: .center, views: [
+                cityNameLabel,
+                UIStackView(.horizontal, spacing: 8, distribution: .equalSpacing, alignment: .center, views: [
+                    weatherIcon,
+                    cityTempLabel
+                ])
+            ]),
             descriptionLabel,
             visibilityLabel,
             pressureLabel,
             humidityLabel,
             windLabel
         ])
+
         container.addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(8)
@@ -45,6 +61,8 @@ final class CitiesListItemCell: UITableViewCell {
 
     func setModel(_ model: CityWeather) {
         cityNameLabel.text = model.cityName
+
+        weatherIcon.load(url: model.iconUrl)
         cityTempLabel.text = String(format: "%.f ℃", model.temperature)
 
         descriptionLabel.text = "Ощущается как \(model.feelsLike) ℃. \(model.description.capitalizingFirstLetter())"

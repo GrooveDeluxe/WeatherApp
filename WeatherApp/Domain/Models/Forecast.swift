@@ -15,6 +15,7 @@ let isoDateFormatter: DateFormatter = {
 struct Forecast {
     let date: Date?
     let temp: Double
+    let description: String?
     let minTemp: Double
     let maxTemp: Double
     let feelsLike: Double
@@ -38,6 +39,7 @@ extension ForecastItem {
         Forecast(
             date: isoDateFormatter.date(from: dt_txt),
             temp: main.tempCelsius,
+            description: weather.first?.description,
             minTemp: main.tempMinCelsius,
             maxTemp: main.tempMaxCelsius,
             feelsLike: main.feelsLikeCelsius,

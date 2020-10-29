@@ -24,11 +24,13 @@ struct ForecastRowViewModel {
 
     let date: String?
     let temp: String
+    let description: String?
     let minTemp: String
     let maxTemp: String
     let feelsLike: String
     let pressure: String
     let humidity: String
+    let iconUrl: URL?
 
     init(forecasts: [Forecast]) {
         if let firstDate = forecasts.first?.date {
@@ -37,37 +39,39 @@ struct ForecastRowViewModel {
             date = nil
         }
 
-        temp = String(format: "%.f ℃", forecasts.averageTemp)
-        minTemp = String(format: "%.f ℃", forecasts.averageMinTemp)
-        maxTemp = String(format: "%.f ℃", forecasts.averageMaxTemp)
-        feelsLike = String(format: "%.f ℃", forecasts.averageFeelsLike)
-        pressure =  "\(forecasts.averagePressure)"
-        humidity = "\(forecasts.averageHumidity)"
+        temp = String(format: "%.f ℃", forecasts.temp)
+        description = forecasts.first?.description
+        minTemp = String(format: "%.f ℃", forecasts.minTemp)
+        maxTemp = String(format: "%.f ℃", forecasts.maxTemp)
+        feelsLike = String(format: "%.f ℃", forecasts.feelsLike)
+        pressure =  "\(forecasts.pressure)"
+        humidity = "\(forecasts.humidity)"
+        iconUrl = forecasts.first?.iconUrl
     }
 }
 
 extension Array where Element == Forecast {
-    var averageTemp: Double {
-        map { $0.temp }.reduce(0.0,+) / Double(count)
+    var temp: Double {
+        map { $0.temp }.first ?? 0.0
     }
 
-    var averageMinTemp: Double {
-        map { $0.minTemp }.reduce(0.0,+) / Double(count)
+    var minTemp: Double {
+        map { $0.minTemp }.min() ?? 0.0
     }
 
-    var averageMaxTemp: Double {
-        map { $0.maxTemp }.reduce(0.0,+) / Double(count)
+    var maxTemp: Double {
+        map { $0.maxTemp }.max() ?? 0.0
     }
 
-    var averageFeelsLike: Double {
-        map { $0.feelsLike }.reduce(0.0,+) / Double(count)
+    var feelsLike: Double {
+        map { $0.feelsLike }.first ?? 0.0
     }
 
-    var averagePressure: Int {
-        map { $0.pressure }.reduce(0,+) / count
+    var pressure: Int {
+        map { $0.pressure }.first ?? 0
     }
 
-    var averageHumidity: Int {
-        map { $0.humidity }.reduce(0,+) / count
+    var humidity: Int {
+        map { $0.humidity }.first ?? 0
     }
 }

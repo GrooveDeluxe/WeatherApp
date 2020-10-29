@@ -21,7 +21,9 @@ final class CitiesListInteractor {
         observeToken = cityDao.managedObjects.observe { (change) in
             self._citiesUpdated.accept(())
         }
-        return _citiesUpdated.debounce(.milliseconds(500), scheduler: MainScheduler.instance).asObservable()
+        return _citiesUpdated
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .asObservable()
     }()
 
     func updateCitiesWeather() -> Single<[CityWeather]> {

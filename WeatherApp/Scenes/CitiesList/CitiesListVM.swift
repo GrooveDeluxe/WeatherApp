@@ -22,7 +22,6 @@ final class CitiesListVM: Reactor, Coordinatable, Interactable {
     enum Mutation {
         case setLoading(Bool)
         case setCitiesWeather([CityWeather])
-        case addCity(Int)
         case deleteCity(Int)
     }
 
@@ -67,8 +66,6 @@ final class CitiesListVM: Reactor, Coordinatable, Interactable {
             state.isLoading = loading
         case .setCitiesWeather(let citiesWeather):
             state.citiesWeather = citiesWeather
-        case .addCity(let cityId):
-            break
         case .deleteCity(let cityId):
             interactor.deleteCity(cityId)
             if let index = state.citiesWeather.firstIndex(where: { $0.cityId == cityId }) {
@@ -83,6 +80,8 @@ final class CitiesListVM: Reactor, Coordinatable, Interactable {
 
 private extension CitiesListVM {
     func citiesWeatherUpdated(_ citiesWeather: [CityWeather]) {
+        // Апи не возвращает локализованные названия городов для запроса по списку айдишников,
+        // для этого подменяем на название из базы
         let cities = interactor.cities()
         let prepared = citiesWeather.map { item in
             CityWeather(
@@ -95,7 +94,8 @@ private extension CitiesListVM {
                 pressure:  item.pressure,
                 humidity:  item.humidity,
                 windSpeed:  item.windSpeed,
-                windDegree:  item.windDegree
+                windDegree:  item.windDegree,
+                iconUrl: item.iconUrl
             )
         }
         let sorted = prepared.sorted(by: { $0.cityName < $1.cityName })
