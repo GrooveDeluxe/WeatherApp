@@ -24,8 +24,6 @@ final class AddCityVM: Reactor, Coordinatable, Interactable {
 
     // MARK: - Properties
 
-    private let bag = DisposeBag()
-
     let initialState = State()
 
     // MARK: - Public
@@ -54,7 +52,7 @@ private extension AddCityVM {
     func cityWeatherUpdated(_ citiesWeather: CityWeather) {
         let city = City(cityId: citiesWeather.cityId, name: citiesWeather.cityName)
         interactor.addCityToDB(city)
-        coordinator.pop()
+        coordinator.close()
     }
 
     func cityWeatherUpdateFailed(_ error: Error) {

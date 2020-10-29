@@ -5,12 +5,6 @@
 
 import RealmSwift
 
-public struct DAOChangeset {
-    public let deleted: [Int]
-    public let inserted: [Int]
-    public let updated: [Int]
-}
-
 protocol DAO {
 
     associatedtype P: Persistable
@@ -25,7 +19,7 @@ protocol DAO {
     func erase(managedObjects: [P.ManagedObject])
 }
 
-class RealmDAO<P: Persistable>: DAO {
+final class RealmDAO<P: Persistable>: DAO {
 
     typealias DBModel = P
 
@@ -58,7 +52,7 @@ class RealmDAO<P: Persistable>: DAO {
 
     func erase(managedObject: P.ManagedObject) {
         try? realm.write {
-            realm.delete(managedObject, cascading: true)
+            realm.delete(managedObject)
         }
     }
 

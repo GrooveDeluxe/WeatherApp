@@ -30,7 +30,7 @@ extension WeatherTarget: TargetType {
     }
 
     var baseURL: URL {
-        return URL(string: "https://api.openweathermap.org/data/2.5/")!
+        return Config.apiBaseUrl
     }
 
     var path: String {

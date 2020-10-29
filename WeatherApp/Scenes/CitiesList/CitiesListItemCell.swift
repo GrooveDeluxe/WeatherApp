@@ -5,7 +5,7 @@
 
 import UIKit
 
-class CitiesListItemCell: UITableViewCell {
+final class CitiesListItemCell: UITableViewCell {
 
     private let cityNameLabel = UILabel(style: .title1, text: "", lines: 0)
     private let cityTempLabel = UILabel(style: .title2, text: "")

@@ -33,8 +33,6 @@ final class CitiesListVM: Reactor, Coordinatable, Interactable {
 
     // MARK: - Properties
 
-    private let bag = DisposeBag()
-
     let initialState = State()
 
     // MARK: - Public
@@ -48,7 +46,7 @@ final class CitiesListVM: Reactor, Coordinatable, Interactable {
         case .viewLoaded:
             interactor.citiesUpdated
                 .bind { [weak self] in self?.action.accept(.fetchCities) }
-                .disposed(by: bag)
+                .disposed(by: disposeBag)
         case .fetchCities:
             interact(interactor.updateCitiesWeather(),
                      complete: CitiesListVM.citiesWeatherUpdated,

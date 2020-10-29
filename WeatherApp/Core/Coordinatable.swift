@@ -10,17 +10,19 @@ public protocol Coordinatable: class, AssociatedStore {
     var coordinator: Coordinator { get }
 }
 
-private var coordinatorKey = "coordinator"
+private enum AssociatedKeys {
+    static var coordinatorKey = "coordinator"
+}
 
 extension Coordinatable {
     public var coordinator: Coordinator {
-        guard let coord: Coordinator =  self.associatedObject(forKey: &coordinatorKey) else {
+        guard let coord: Coordinator =  self.associatedObject(forKey: &AssociatedKeys.coordinatorKey) else {
             fatalError("Coordinator hasn't injected \(self)")
         }
         return coord
     }
 
     func set(coordinator: Coordinator) {
-        self.setAssociatedObject(coordinator, forKey: &coordinatorKey)
+        self.setAssociatedObject(coordinator, forKey: &AssociatedKeys.coordinatorKey)
     }
 }

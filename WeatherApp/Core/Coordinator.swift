@@ -8,13 +8,6 @@ import UIKit
 class Coordinator {
     weak private(set) var vc: UIViewController?
 
-    var vcOrFatal: UIViewController {
-        guard let vc = self.vc else {
-            fatalError()
-        }
-        return vc
-    }
-
     required public init(vc: UIViewController) {
         self.vc = vc
     }

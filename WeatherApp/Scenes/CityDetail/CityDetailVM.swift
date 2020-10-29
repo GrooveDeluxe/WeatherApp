@@ -27,8 +27,6 @@ final class CityDetailVM: Reactor, Coordinatable, Interactable {
 
     // MARK: - Properties
 
-    private let bag = DisposeBag()
-
     let initialState: State
 
     // MARK: - Public
@@ -72,15 +70,15 @@ private extension CityDetailVM {
         coordinator.showAlert(title: "Ошибка", message: error.localizedDescription, actions: [.close])
     }
 
-    typealias GroupedForecast = (date: Date, items: [Forecast])
+    typealias GroupedForecast = (key: String, items: [Forecast])
 
     func preparedForecastModels(_ forecasts: [Forecast]) -> [ForecastRowViewModel] {
-        let grouped = Dictionary(grouping: forecasts, by: { $0.groupingDate })
+        let grouped = Dictionary(grouping: forecasts, by: { $0.groupingKey })
         // Сгруппированные по секциям элементы преобразуем в массив и восстанавливаем их изначальный порядок
         return forecasts
             .reduce(into: [GroupedForecast]()) { result, item in
-                guard !result.contains(where: { $0.date == item.groupingDate }) else { return }
-                result.append((date: item.groupingDate, items: grouped[item.groupingDate]!))
+                guard !result.contains(where: { $0.key == item.groupingKey }) else { return }
+                result.append((key: item.groupingKey, items: grouped[item.groupingKey]!))
             }
             .map { ForecastRowViewModel(forecasts: $0.items) }
     }

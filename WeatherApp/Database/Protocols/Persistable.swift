@@ -15,7 +15,6 @@ protocol Persistable {
 }
 
 extension Persistable {
-
     func translate() -> Self.ManagedObject {
         return self.managedObject()
     }

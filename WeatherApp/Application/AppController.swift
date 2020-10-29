@@ -9,7 +9,7 @@ protocol AppControllerProtocol {
     func setup()
 }
 
-class AppController {
+final class AppController {
 
     weak var window: UIWindow?
 
@@ -31,10 +31,7 @@ extension AppController {
     func initialize() {
         let cityDao = RealmDAO<City>()
         if cityDao.objects.count == 0 {
-            cityDao.persist(objects: [
-                City(cityId: 524901, name: "Москва"),
-                City(cityId: 625144, name: "Минск")
-            ])
+            cityDao.persist(objects: Config.defaultCities)
         }
     }
 

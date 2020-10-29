@@ -33,12 +33,6 @@ extension Array where Element: Persistable {
     }
 }
 
-extension List {
-    func asPersistableArray<P: Persistable>() -> [P] where Element == P.ManagedObject {
-        map { P(managedObject: $0) }
-    }
-}
-
 extension Results {
     func translated<P: Persistable>(type: P.Type) -> [P] {
         return compactMap {

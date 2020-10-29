@@ -36,15 +36,17 @@ protocol Reactor: class, AssociatedStore {
     func reduce(state: State, mutation: Mutation) -> State
 }
 
-private var actionKey = "action"
-private var mutationKey = "mutation"
-private var stateKey = "state"
-private var subscribedKey = "subscribed"
-private var disposeBagKey = "disposeBag"
+private enum AssociatedKeys {
+    static var actionKey = "action"
+    static var mutationKey = "mutation"
+    static var stateKey = "state"
+    static var subscribedKey = "subscribed"
+    static var disposeBagKey = "disposeBag"
+}
 
 extension Reactor {
     private var _action: PublishRelay<Action> {
-        associatedObject(forKey: &actionKey, default: .init())
+        associatedObject(forKey: &AssociatedKeys.actionKey, default: .init())
     }
 
     public var action: PublishRelay<Action> {
@@ -53,7 +55,7 @@ extension Reactor {
     }
 
     private var _mutation: PublishRelay<Mutation> {
-        associatedObject(forKey: &mutationKey, default: .init())
+        associatedObject(forKey: &AssociatedKeys.mutationKey, default: .init())
     }
 
     public var mutation: PublishRelay<Mutation> {
@@ -62,7 +64,7 @@ extension Reactor {
     }
 
     private var _state: BehaviorRelay<State> {
-        let state = associatedObject(forKey: &stateKey, default: BehaviorRelay<State>(value: initialState))
+        let state = associatedObject(forKey: &AssociatedKeys.stateKey, default: BehaviorRelay<State>(value: initialState))
         if !isSubscribed {
             _action.subscribe(onNext: { self.mutate(action: $0) }).disposed(by: disposeBag)
             _mutation.map { self.reduce(state: state.value, mutation: $0) }.bind(to: state).disposed(by: disposeBag)
@@ -80,12 +82,12 @@ extension Reactor {
     }
 
     private var isSubscribed: Bool {
-        get { return associatedObject(forKey: &subscribedKey, default: false) }
-        set { setAssociatedObject(newValue, forKey: &subscribedKey) }
+        get { return associatedObject(forKey: &AssociatedKeys.subscribedKey, default: false) }
+        set { setAssociatedObject(newValue, forKey: &AssociatedKeys.subscribedKey) }
     }
 
-    fileprivate var disposeBag: DisposeBag {
-        get { return associatedObject(forKey: &disposeBagKey, default: DisposeBag()) }
+    var disposeBag: DisposeBag {
+        get { return associatedObject(forKey: &AssociatedKeys.disposeBagKey, default: DisposeBag()) }
     }
 
     func make(_ mutations: Mutation...) {

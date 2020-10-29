@@ -30,8 +30,6 @@ struct ForecastRowViewModel {
     let pressure: String
     let humidity: String
 
-    let groupingDate: Date
-
     init(forecasts: [Forecast]) {
         if let firstDate = forecasts.first?.date {
             date = dateFormatter.string(from: firstDate)
@@ -45,8 +43,6 @@ struct ForecastRowViewModel {
         feelsLike = String(format: "%.f ℃", forecasts.averageFeelsLike)
         pressure =  "\(forecasts.averagePressure)"
         humidity = "\(forecasts.averageHumidity)"
-
-        groupingDate = forecasts.first?.groupingDate ?? Date()
     }
 }
 

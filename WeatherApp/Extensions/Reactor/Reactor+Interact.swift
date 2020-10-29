@@ -5,18 +5,7 @@
 
 import RxSwift
 
-private var disposeBagKey = "disposeBag"
-
 extension Reactor where Self: Interactable {
-
-    var disposeBag: DisposeBag {
-        if let object = objc_getAssociatedObject(self, &disposeBagKey) as? DisposeBag {
-            return object
-        }
-        let object = DisposeBag()
-        objc_setAssociatedObject(self, &disposeBagKey, object, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        return object
-    }
 
     func interact<T>(_ observable: Single<T>,
                      skipIfTrue: Bool = false,

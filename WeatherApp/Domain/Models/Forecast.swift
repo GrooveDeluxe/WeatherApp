@@ -25,9 +25,9 @@ struct Forecast {
     let windSpeed: Double
     let windDegree: Int
 
-    var groupingDate: Date {
-        guard let date = date else { return Date() }
-        return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: date) ?? Date()
+    var groupingKey: String {
+        guard let date = date else { return "" }
+        return String(Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: date)?.timeIntervalSince1970 ?? 0)
     }
 }
 
