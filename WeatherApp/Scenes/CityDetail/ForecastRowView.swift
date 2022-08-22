@@ -30,7 +30,7 @@ final class ForecastRowView: UIView {
     private let humidityLabel = UILabel(style: .description, text: "")
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(.vertical, spacing: 8, views: [
+        UIStackView(.vertical, spacing: 8, views: [
             UIStackView(.horizontal, spacing: 8, views: [
                 dateLabel,
                 UIStackView(.horizontal, spacing: 8, views: [weatherIcon, tempLabel])
@@ -41,7 +41,6 @@ final class ForecastRowView: UIView {
             pressureLabel,
             humidityLabel
         ])
-        return stackView
     }()
 
     override init(frame: CGRect) {

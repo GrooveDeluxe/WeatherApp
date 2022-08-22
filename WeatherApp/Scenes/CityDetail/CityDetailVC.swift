@@ -21,8 +21,7 @@ final class CityDetailVC: BaseVC, ReactorHolder {
     }()
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(.vertical, spacing: 8, views: rows)
-        return stackView
+        UIStackView(.vertical, spacing: 8, views: rows)
     }()
 
     private lazy var rows: [ForecastRowView] = []
